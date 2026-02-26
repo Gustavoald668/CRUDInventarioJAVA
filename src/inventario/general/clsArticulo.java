@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package frmArticulo;
+package inventario.general;
 
 /**
  *
@@ -11,27 +11,31 @@ package frmArticulo;
 public class clsArticulo {
  
     // Atributos que necesito que tenga mi objeto articulo
-    private string codigo;
-    private string descripcion;
+    private String codigo;
+    private String descripcion;
     private double precio;
     
     //constructor
-    public clsArticulo(string codigo, string descripcion, double precio ){
+    public clsArticulo(String codigo, String descripcion, double precio ){
         this.codigo= codigo;
         this.descripcion = descripcion;
         this.precio = precio;
     }
     
     //Imprime en consola los datos del articulo.
-    public string aTexto(){
-          string articulo = this.codigo+"|"+ this.descripcion + "|" + this.precio;
+    public String aTexto(){
+          String articulo = this.codigo+"|"+ this.descripcion + "|" + this.precio;
           return articulo;
     }
     
     //guardar informacion
-    public vuid guardar (){
-        system. , print }(this.aTexto)|;
+    public void guardar (){
+        //insertando la clase de MODELO
+        mArticulos article = new mArticulos();
+        //enviamos la cadena de texto para guardaren el archivo
+        article.insertar(this.aTexto());
+        
                 
     }
 }
-//prueba 
+ 
