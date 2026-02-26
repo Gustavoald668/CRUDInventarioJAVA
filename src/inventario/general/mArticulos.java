@@ -17,7 +17,7 @@ public class mArticulos {
         
       try {
             // Esta linea crea el archivo donde se guarda la informacion
-            FileWriter archivo = new FileWriter("listado_clientes.txt");
+            FileWriter archivo = new FileWriter("listado_Articulos.txt",true);
             // Buffer temporal que se encarga de guardar los datos en el archivo
             BufferedWriter buffer = new BufferedWriter(archivo);
             
