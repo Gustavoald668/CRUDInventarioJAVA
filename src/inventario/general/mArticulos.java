@@ -4,9 +4,11 @@
  */
 package inventario.general;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
@@ -31,6 +33,25 @@ public class mArticulos {
 
         } catch (IOException e) {
             //lblSaludo.setText("Error al guardar el archivo: " + e.getMessage());
-        }  
+        }
+       public void consultar(){
+           
+           ArrayList<Stringring> listaRegistros = new ArrayList<>();
+           
+           try (BufferedReadereader br = new BufferredReader){(new FileReder (listado articulo.txt)){
+               string linea;
+               while ((linea = br.readLine())) != null){
+               string[]datos= linea.split("|");
+                   datos(0)
+                           "codigo"+ datos [0] +"Descripcion" + datos[1] + "precio: " + datos[2] ;
+                           listaRegistros.add(datoBonito);
+               }
+               
+           }catch (IOExceptionxeption e) {
+                   System.out.println(listaRegistros);+ 
+                   }
+           }
+       }
     }
+   
 }
