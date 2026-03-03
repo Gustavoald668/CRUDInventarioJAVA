@@ -6,6 +6,7 @@ package inventario.general;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,24 +35,23 @@ public class mArticulos {
         } catch (IOException e) {
             //lblSaludo.setText("Error al guardar el archivo: " + e.getMessage());
         }
-       public void consultar(){
-           
-           ArrayList<Stringring> listaRegistros = new ArrayList<>();
-           
-           try (BufferedReadereader br = new BufferredReader){(new FileReder (listado articulo.txt)){
-               string linea;
-               while ((linea = br.readLine())) != null){
-               string[]datos= linea.split("|");
-                   datos(0)
-                           "codigo"+ datos [0] +"Descripcion" + datos[1] + "precio: " + datos[2] ;
-                           listaRegistros.add(datoBonito);
-               }
-               
-           }catch (IOExceptionxeption e) {
-                   System.out.println(listaRegistros);+ 
-                   }
-           }
-       }
     }
-   
+       public  ArrayList<String> consultar(){
+        
+        ArrayList<String> listaRegistros = new ArrayList<>();
+        
+        try(BufferedReader br = new BufferedReader( new FileReader("listado_articulos.txt"))){
+            String linea;
+            while ((linea = br.readLine()) != null){
+                String[] datos = linea.split("\\|");
+                String datoVisual = "Codigo: " + datos[0] + "Descripcion: " + datos[1] + "Precio: " + datos[2];
+                listaRegistros.add(datoVisual);
+            }
+        }catch(IOException e){
+            System.out.println("Mensaje de error" + e.getMessage());
+            listaRegistros.add("Error al cargar los datos");
+        }
+        return listaRegistros;
+    }
+    
 }

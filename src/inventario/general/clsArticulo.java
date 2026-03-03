@@ -4,6 +4,8 @@
  */
 package inventario.general;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author gusta
@@ -21,7 +23,8 @@ public class clsArticulo {
         this.descripcion = descripcion;
         this.precio = precio;
     }
-    
+    //sobrecarga de metodo constructor
+    public clsArticulo(){}
     //Imprime en consola los datos del articulo.
     public String aTexto(){
           String articulo = this.codigo+"|"+ this.descripcion + "|" + this.precio;
@@ -37,5 +40,20 @@ public class clsArticulo {
         
                 
     }
+    
+    public void llenarLista (){
+        mArticulos mArticle = new mArticulos();
+        ArrayList<String> datos = datos = mArticle.consultar();
+        // Llamamos la variable con los datos el modelo
+        ArrayList<String> datos = Marticle.consultar();
+        
+        DefaultListModel<String> modelista = new DefaultListModel<> ();
+        for (String registro: datos) {
+            moddelLista.addElement(registro);
+        }
+        
+        // devolvemos los datos registrados en el modelo de lista 
+        retrun ModelLista;
+    }
 }
- 
+  

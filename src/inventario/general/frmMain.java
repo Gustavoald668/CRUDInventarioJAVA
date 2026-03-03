@@ -38,6 +38,7 @@ frmArticulo fArticulo = new frmArticulo();
         btnInventario.addActionListener(this::btnInventarioActionPerformed);
 
         btnClientes.setText("Clientes");
+        btnClientes.addActionListener(this::btnClientesActionPerformed);
 
         jButton1.setText("selecciona una opcion");
         jButton1.addActionListener(this::jButton1ActionPerformed);
@@ -94,6 +95,10 @@ frmArticulo fArticulo = new frmArticulo();
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         fCliente.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClientesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

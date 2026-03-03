@@ -43,7 +43,7 @@ public class frmArticulo extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        lstArticulo = new javax.swing.JList<>();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -115,12 +115,12 @@ public class frmArticulo extends javax.swing.JFrame {
 
         jButton2.addActionListener(this::jButton2ActionPerformed);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        lstArticulo.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(lstArticulo);
 
         jButton3.setText("Buscar");
         jButton3.addActionListener(this::jButton3ActionPerformed);
@@ -195,8 +195,8 @@ public class frmArticulo extends javax.swing.JFrame {
     }//GEN-LAST:event_txtprecioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        clsArticulo cArticulo = new clsArticulo(txtcodigo.getText(),txtDescripcion.getText(), Double.parseDouble(txtprecio.getText()));
-                    cArticulo.guardar();
+        clsArticulo cArticulo = new clsArticulo();
+                    lstArticulo.setModel cArticulo.llenarLista();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -243,11 +243,11 @@ public class frmArticulo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JList<String> lstArticulo;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtcodigo;
     private javax.swing.JTextField txtprecio;
