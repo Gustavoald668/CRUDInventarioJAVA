@@ -43,9 +43,12 @@ public class mArticulos {
         try(BufferedReader br = new BufferedReader( new FileReader("listado_articulos.txt"))){
             String linea;
             while ((linea = br.readLine()) != null){
+                // separa el dato guardado por un caracter especial
                 String[] datos = linea.split("\\|");
-                String datoVisual = "Codigo: " + datos[0] + "Descripcion: " + datos[1] + "Precio: " + datos[2];
-                listaRegistros.add(datoVisual);
+            // crea un string formateando como lo necesitas
+                String datoBonito = "Codigo: " + datos[0] + "| Descripcion: " + datos[1] + "| precio: " +datos[2];
+                // Agrega el registro a el listado de datos
+                listaRegistros.add(datoBonito);
             }
         }catch(IOException e){
             System.out.println("Mensaje de error" + e.getMessage());
