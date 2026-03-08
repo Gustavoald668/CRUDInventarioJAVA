@@ -281,7 +281,7 @@ public class frmArticulo extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         clsArticulo cArticulo = new clsArticulo();
-                    lstArticulo.setModel cArticulo.llenarLista();
+        lstArticulo.setModel(cArticulo.llenarLista());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -304,12 +304,18 @@ public class frmArticulo extends javax.swing.JFrame {
        // Asegura que seleccionamos un objeto en la lista
         if(!evt.getValueIsAdjusting()) {
            // le asigna el valor de la lista seleccionado a la variable
-           string registroSeleccionado = lstArticulos.getSelectedValue();
-            string registroSeleccionado = lstArticulos.getslectedValue();
-           // separar los datos por el caracter especial
-           string [] datos = registroSeleccionado = lstArticulo.getSelectedValue();
-           
-            txtdescripcion1.setText(resgistroSeleccionado);
+        // 1. Sacamos el texto que seleccionaste en la lista
+            String seleccionado = lstArticulo.getSelectedValue();
+            
+            // 2. Si no está vacío, separamos los datos por el palito |
+            if (seleccionado != null) {
+                String[] datos = seleccionado.split("\\|");
+                
+                // 3. Ponemos cada dato en su cuadro correspondiente
+                txtcodigo1.setText(datos[0]);
+                txtDescripcion1.setText(datos[1]);
+                txtprecio1.setText(datos[2]);
+            }
         }
     }//GEN-LAST:event_lstArticuloValueChanged
 

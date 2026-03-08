@@ -1,59 +1,49 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package inventario.general;
 
 import java.util.ArrayList;
+import javax.swing.DefaultListModel; // Importante para que funcione el modelo de lista
 
 /**
- *
  * @author gusta
  */
 public class clsArticulo {
  
-    // Atributos que necesito que tenga mi objeto articulo
+    // Atributos
     private String codigo;
     private String descripcion;
     private double precio;
     
-    //constructor
+    // Constructor con parámetros
     public clsArticulo(String codigo, String descripcion, double precio ){
-        this.codigo= codigo;
+        this.codigo = codigo;
         this.descripcion = descripcion;
         this.precio = precio;
     }
-    //sobrecarga de metodo constructor
+
+    // Sobrecarga de método constructor (vacío)
     public clsArticulo(){}
-    //Imprime en consola los datos del articulo.
+
+    // Convierte los datos a una cadena separada por tuberías |
     public String aTexto(){
-          String articulo = this.codigo+"|"+ this.descripcion + "|" + this.precio;
-          return articulo;
+          return this.codigo + "|" + this.descripcion + "|" + this.precio;
     }
     
-    //guardar informacion
-    public void guardar (){
-        //insertando la clase de MODELO
-        mArticulos article = new mArticulos();
-        //enviamos la cadena de texto para guardaren el archivo
-        article.insertar(this.aTexto());
-        
-                
+    // Guardar información usando la clase Modelo
+    public void guardar(){
+        mArticulos modelo = new mArticulos();
+        modelo.insertar(this.aTexto());
     }
     
-    public void llenarLista (){
+    // Método para llenar la lista (Corregido de 'void' a 'DefaultListModel')
+    public DefaultListModel<String> llenarLista(){
         mArticulos mArticle = new mArticulos();
-        ArrayList<String> datos = datos = mArticle.consultar();
-        // Llamamos la variable con los datos el modelo
-        ArrayList<String> datos = Marticle.consultar();
+        ArrayList<String> datos = mArticle.consultar();
         
-        DefaultListModel<String> modelista = new DefaultListModel<> ();
-        for (String registro: datos) {
-            moddelLista.addElement(registro);
+        DefaultListModel<String> modelista = new DefaultListModel<>();
+        for (String registro : datos) {
+            modelista.addElement(registro);
         }
         
-        // devolvemos los datos registrados en el modelo de lista 
-        retrun ModelLista;
+        return modelista; 
     }
 }
-  

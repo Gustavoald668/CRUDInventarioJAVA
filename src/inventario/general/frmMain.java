@@ -32,7 +32,7 @@ frmArticulo fArticulo = new frmArticulo();
         jPanel1 = new javax.swing.JPanel();
         btnInventario = new javax.swing.JButton();
         btnClientes = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnOpciones = new javax.swing.JButton();
 
         btnInventario.setText("Inventarios");
         btnInventario.addActionListener(this::btnInventarioActionPerformed);
@@ -40,8 +40,8 @@ frmArticulo fArticulo = new frmArticulo();
         btnClientes.setText("Clientes");
         btnClientes.addActionListener(this::btnClientesActionPerformed);
 
-        jButton1.setText("selecciona una opcion");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
+        btnOpciones.setText("selecciona una opcion");
+        btnOpciones.addActionListener(this::btnOpcionesActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -50,7 +50,7 @@ frmArticulo fArticulo = new frmArticulo();
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(203, 203, 203)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(btnOpciones)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnInventario)
                         .addGap(18, 18, 18)
@@ -61,7 +61,7 @@ frmArticulo fArticulo = new frmArticulo();
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addComponent(jButton1)
+                .addComponent(btnOpciones)
                 .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnInventario)
@@ -92,9 +92,10 @@ frmArticulo fArticulo = new frmArticulo();
         fArticulo.setVisible(true);
     }//GEN-LAST:event_btnInventarioActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        fCliente.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpcionesActionPerformed
+        frmCliente ventanaCliente = new frmCliente();
+        ventanaCliente.setVisible(true);
+    }//GEN-LAST:event_btnOpcionesActionPerformed
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
         // TODO add your handling code here:
@@ -104,7 +105,7 @@ frmArticulo fArticulo = new frmArticulo();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClientes;
     private javax.swing.JButton btnInventario;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnOpciones;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;
     // End of variables declaration//GEN-END:variables
