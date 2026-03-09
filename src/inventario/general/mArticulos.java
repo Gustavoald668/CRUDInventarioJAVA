@@ -55,6 +55,56 @@ public class mArticulos {
             listaRegistros.add("Error al cargar los datos");
         }
         return listaRegistros;
-    }
-    
+       }
+        public void update() {
+        String archivoOriginal){
+ newPrecio;
+    String lineaOriginal = this.codigo + "|" + this.descripcion
+            "|" + this.precio;
+            //imprimir los nuevos valores
+            system.outprintIn("Nuevo valores : " + lineaOriginal);
+            //solicita la actualizacion del registro
+            mArticulo mArticle = new Marticulo();
+            mArticle.update(lineaOriginal, nuevaLinea, "listado_articulos.txt");
+            public void update(String lineaActual, String lineaNueva, String archivoOriginal);
+            java.io.File fileOriginal = new java.ioFile(archivoOriginal);
+            java.ioFile fileOriginal = new java.io.File("temporal.txt");
+            
+            try(BufferedReader br = new BufferReader(new FileReader (fileOriginal));
+               BufferedWriter bw = new BufferedWriter(new FileWriters fileTemporal);) 
+            String lineaLeida;
+            
+            while((lineaLeida = br.readLine())!= null){
+            if(lineaLeida.equals(lineaActual)){
+            bw.write(lineaNueva);
+            actualizado = true;
+            ) else {
+             bw.write(lineaLeida);
+                    }
+             }
+            bw.newLine();
+           
+            }
+            
+         }cath(Exeption e){
+             System.out.println("Error al actualizar" + e.getMessage());
+         }
+}else{
+    fileTemporal.delete();
+system.out.print("N");
 }
+            
+            
+}
+           
+            
+            )catch(){
+    
+
+                    
+        
+        
+        
+}
+    
+

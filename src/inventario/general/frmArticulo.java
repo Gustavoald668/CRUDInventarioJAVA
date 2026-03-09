@@ -311,17 +311,18 @@ public class frmArticulo extends javax.swing.JFrame {
        // Asegura que seleccionamos un objeto en la lista
         if(!evt.getValueIsAdjusting()) {
            // le asigna el valor de la lista seleccionado a la variable
-        // 1. Sacamos el texto que seleccionaste en la lista
-            String seleccionado = lstArticulo.getSelectedValue();
-            
-            // 2. Si no está vacío, separamos los datos por el palito |
-            if (seleccionado != null) {
-                String[] datos = seleccionado.split("\\|");
-                
-                // 3. Ponemos cada dato en su cuadro correspondiente
-                txtcodigo1.setText(datos[0]);
-                txtDescripcion1.setText(datos[1]);
-                txtprecio1.setText(datos[2]);
+        String registroSeleccionado = lstArticulo.getSelectedValue();
+        // separar los datos por el caracter especial
+        String[] datos = registroSeleccionado.split("\\|");
+        // preparamos los datos para mostrar limpios
+        String codigo = datos [0].replace("codigo: ","");
+        String descripcion = datos [1].replace(Descripcion: ",");
+        Double precio = Double.parseDouble(datos[2]. replace (" precio: ", ""));
+        txtCodigo1.setText(cdigo);
+        txDescripcion1.setText(descripcion);
+        txtprecio1.setText(codigo);
+        //llenamos el objeto cpn los valores originales
+        updateArticulo = new clsArticulo(codigo,descripcion,precio);
             }
         }
     }//GEN-LAST:event_lstArticuloValueChanged
