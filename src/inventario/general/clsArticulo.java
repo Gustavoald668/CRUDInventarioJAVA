@@ -26,9 +26,12 @@ public class clsArticulo {
     // Convierte los datos a una cadena separada por tuberías |
     public String aTexto(){
           return this.codigo + "|" + this.descripcion + "|" + this.precio;
-    }
+          public String getDescripcion(){
+           return this.descripcion;
+          }
     
-    // Guardar información usando la clase Modelo
+    
+    // Guardar información 
     public void guardar(){
         mArticulos modelo = new mArticulos();
         modelo.insertar(this.aTexto());

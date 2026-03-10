@@ -56,55 +56,249 @@ public class mArticulos {
         }
         return listaRegistros;
        }
-        public void update() {
-        String archivoOriginal){
- newPrecio;
-    String lineaOriginal = this.codigo + "|" + this.descripcion
-            "|" + this.precio;
-            //imprimir los nuevos valores
-            system.outprintIn("Nuevo valores : " + lineaOriginal);
-            //solicita la actualizacion del registro
-            mArticulo mArticle = new Marticulo();
-            mArticle.update(lineaOriginal, nuevaLinea, "listado_articulos.txt");
-            public void update(String lineaActual, String lineaNueva, String archivoOriginal);
-            java.io.File fileOriginal = new java.ioFile(archivoOriginal);
-            java.ioFile fileOriginal = new java.io.File("temporal.txt");
+       
+        public void update(String lineaActual, String lineaNueva, 
+            String archivoOriginal){
+        
+        //Declaramos los archivos original(lectura) temporal(escritura)
+        java.io.File fileOriginal = new java.io.File(archivoOriginal);
+        java.io.File fileTemporal = new java.io.File("temporal.txt");
+        
+        String lineaLeida;
+        Boolean actualizado = false;
+        
+        try(BufferedReader br = new BufferedReader(new FileReader(fileOriginal));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(fileTemporal));){
             
-            try(BufferedReader br = new BufferReader(new FileReader (fileOriginal));
-               BufferedWriter bw = new BufferedWriter(new FileWriters fileTemporal);) 
-            String lineaLeida;
-            
-            while((lineaLeida = br.readLine())!= null){
-            if(lineaLeida.equals(lineaActual)){
-            bw.write(lineaNueva);
-            actualizado = true;
-            ) else {
-             bw.write(lineaLeida);
-                    }
-             }
-            bw.newLine();
-           
+            while((lineaLeida = br.readLine()) != null){
+                if(lineaLeida.equals(lineaActual)){
+                    bw.write(lineaNueva);
+                    actualizado = true;
+                } else {
+                    bw.write(lineaLeida);
+                }
+                bw.newLine();
             }
-            
-         }cath(Exeption e){
-             System.out.println("Error al actualizar" + e.getMessage());
-         }
-}else{
-    fileTemporal.delete();
-system.out.print("N");
-}
-            
-            
-}
-           
-            
-            )catch(){
-    
-
-                    
+        }catch(Exception e){
+            System.out.println("Error al actualizar" + e.getMessage());
+        }
+        
+        // Eliminación de archivo original y renombre de temporal
+        if(actualizado){
+            if(fileOriginal.delete()){
+                fileTemporal.renameTo(fileOriginal);
+                System.out.println("Registro Actualizado");
+            } else {
+                System.out.println("Error: No se pudo borrar el archivo");
+            }
+        }else{
+            fileTemporal.delete();
+            System.out.println("No se encontró el registro");
+        }
         
         
+    }
+            public void update(String lineaActual, String lineaNueva, 
+            String archivoOriginal){
         
-}
-    
-
+        //Declaramos los archivos original(lectura) temporal(escritura)
+        java.io.File fileOriginal = new java.io.File(archivoOriginal);
+        java.io.File fileTemporal = new java.io.File("temporal.txt");
+        
+        String lineaLeida;
+        Boolean actualizado = false;
+        
+        try(BufferedReader br = new BufferedReader(new FileReader(fileOriginal));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(fileTemporal));){
+            
+            while((lineaLeida = br.readLine()) != null){
+                if(lineaLeida.equals(lineaActual)){
+                    bw.write(lineaNueva);
+                    actualizado = true;
+                } else {
+                    bw.write(lineaLeida);
+                }
+                bw.newLine();
+            }
+        }catch(Exception e){
+            System.out.println("Error al actualizar" + e.getMessage());
+        }
+        
+        // Eliminación de archivo original y renombre de temporal
+        if(actualizado){
+            if(fileOriginal.delete()){
+                fileTemporal.renameTo(fileOriginal);
+                System.out.println("Registro Actualizado");
+            } else {
+                System.out.println("Error: No se pudo borrar el archivo");
+            }
+        }else{
+            fileTemporal.delete();
+            System.out.println("No se encontró el registro");
+        }
+        
+        
+    public void update(String lineaActual, String lineaNueva,
+            String archivoOriginal){
+        
+        //Declaramos los archivos original(lectura) temporal(escritura)
+        java.io.File fileOriginal = new java.io.File(archivoOriginal);
+        java.io.File fileTemporal = new java.io.File("temporal.txt");
+        
+        String lineaLeida;
+        Boolean actualizado = false;
+        
+        try(BufferedReader br = new BufferedReader(new FileReader(fileOriginal));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(fileTemporal));){
+            
+            while((lineaLeida = br.readLine()) != null){
+                if(lineaLeida.equals(lineaActual)){
+                    bw.write(lineaNueva);
+                    actualizado = true;
+                } else {
+                    bw.write(lineaLeida);
+                }
+                bw.newLine();
+            }
+        }catch(Exception e){
+            System.out.println("Error al actualizar" + e.getMessage());
+        }
+        
+        // Eliminación de archivo original y renombre de temporal
+        if(actualizado){
+            if(fileOriginal.delete()){
+                fileTemporal.renameTo(fileOriginal);
+                System.out.println("Registro Actualizado");
+            } else {
+                System.out.println("Error: No se pudo borrar el archivo");
+            }
+        }else{
+            fileTemporal.delete();
+            System.out.println("No se encontró el registro");
+        }
+        
+        
+    ublic void update(String lineaActual, String lineaNueva, 
+            String archivoOriginal){
+        
+        //Declaramos los archivos original(lectura) temporal(escritura)
+        java.io.File fileOriginal = new java.io.File(archivoOriginal);
+        java.io.File fileTemporal = new java.io.File("temporal.txt");
+        
+        String lineaLeida;
+        Boolean actualizado = false;
+        
+        try(BufferedReader br = new BufferedReader(new FileReader(fileOriginal));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(fileTemporal));){
+            
+            while((lineaLeida = br.readLine()) != null){
+                if(lineaLeida.equals(lineaActual)){
+                    bw.write(lineaNueva);
+                    actualizado = true;
+                } else {
+                    bw.write(lineaLeida);
+                }
+                bw.newLine();
+            }
+        }catch(Exception e){
+            System.out.println("Error al actualizar" + e.getMessage());
+        }
+        
+        // Eliminación de archivo original y renombre de temporal
+        if(actualizado){
+            if(fileOriginal.delete()){
+                fileTemporal.renameTo(fileOriginal);
+                System.out.println("Registro Actualizado");
+            } else {
+                System.out.println("Error: No se pudo borrar el archivo");
+            }
+        }else{
+            fileTemporal.delete();
+            System.out.println("No se encontró el registro");
+        }
+        
+        
+    ublic void update(String lineaActual, String lineaNueva, 
+            String archivoOriginal){
+        
+        //Declaramos los archivos original(lectura) temporal(escritura)
+        java.io.File fileOriginal = new java.io.File(archivoOriginal);
+        java.io.File fileTemporal = new java.io.File("temporal.txt");
+        
+        String lineaLeida;
+        Boolean actualizado = false;
+        
+        try(BufferedReader br = new BufferedReader(new FileReader(fileOriginal));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(fileTemporal));){
+            
+            while((lineaLeida = br.readLine()) != null){
+                if(lineaLeida.equals(lineaActual)){
+                    bw.write(lineaNueva);
+                    actualizado = true;
+                } else {
+                    bw.write(lineaLeida);
+                }
+                bw.newLine();
+            }
+        }catch(Exception e){
+            System.out.println("Error al actualizar" + e.getMessage());
+        }
+        
+        // Eliminación de archivo original y renombre de temporal
+        if(actualizado){
+            if(fileOriginal.delete()){
+                fileTemporal.renameTo(fileOriginal);
+                System.out.println("Registro Actualizado");
+            } else {
+                System.out.println("Error: No se pudo borrar el archivo");
+            }
+        }else{
+            fileTemporal.delete();
+            System.out.println("No se encontró el registro");
+        }
+        
+        
+    public void eliminar(String lineaActual, String lineaNueva, 
+            String archivoOriginal){
+        
+        //Declaramos los archivos original(lectura) temporal(escritura)
+        java.io.File fileOriginal = new java.io.File(archivoOriginal);
+        java.io.File fileTemporal = new java.io.File("temporal.txt");
+        
+        String lineaLeida;
+        Boolean actualizado = false;
+        
+        try(BufferedReader br = new BufferedReader(new FileReader(fileOriginal));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(fileTemporal));){
+            
+            while((lineaLeida = br.readLine()) != null){
+                if(lineaLeida.equals(lineaActual)){
+                    bw.write(lineaNueva);
+                    actualizado = true;
+                } else {
+                    bw.write(lineaLeida);
+                }
+                bw.newLine();
+            }
+        }catch(Exception e){
+            System.out.println("Error al eliminar" + e.getMessage());
+        }
+        
+        // Eliminación de archivo original y renombre de temporal
+        if(actualizado){
+            if(fileOriginal.delete()){
+                fileTemporal.renameTo(fileOriginal);
+                System.out.println("Registro eliminado");
+            } else {
+                System.out.println("Error: No se pudo borrar el archivo");
+            }
+        }else{
+            fileTemporal.delete();
+            System.out.println("No se encontró el registro");
+        }
+        
+        
+    }
+        }
+       
+        
