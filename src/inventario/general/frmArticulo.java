@@ -20,6 +20,8 @@ public class frmArticulo extends javax.swing.JFrame {
     public frmArticulo() {
         initComponents();
     }
+    
+    clsArticulo updateArticulo;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -74,6 +76,13 @@ public class frmArticulo extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel2.setText("codigo");
+
+        txtcodigo.addActionListener(this::txtcodigoActionPerformed);
+        txtcodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtcodigoKeyReleased(evt);
+            }
+        });
 
         jLabel3.setText("Precio");
 
@@ -381,7 +390,30 @@ public class frmArticulo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+                                        
+    // Solo el contenido, sin volver a declarar el método dentro
+    String codigoBuscar = jButton2.getText().trim(); 
+
+    if (codigoBuscar.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Escribe un código para buscar");
+        return;
+    }
+
+    boolean encontrado = false;
+    for (int i = 0; i < lstArticulo.getModel().getSize(); i++) {
+        String elemento = lstArticulo.getModel().getElementAt(i);
+        if (elemento.contains("codigo: " + codigoBuscar)) {
+            lstArticulo.setSelectedIndex(i);
+            lstArticulo.ensureIndexIsVisible(i);
+            encontrado = true;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        JOptionPane.showMessageDialog(this, "No se encontró el artículo");
+    }
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void txtprecio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtprecio1ActionPerformed
@@ -400,11 +432,15 @@ public class frmArticulo extends javax.swing.JFrame {
         // separar los datos por el caracter especial
         String[] datos = registroSeleccionado.split("\\|");
         // preparamos los datos para mostrar limpios
-        String codigo = datos[0].replace("codigo: ", "")
-        String descripcion = datos[2]. replace("Descripcion:", "");
-        String precio = datos[2].replace
-            }
+        String codigo = datos[0].replace("codigo: ", "");
+        String descripcion = datos[1]. replace("Descripcion:", "");
+        String precio = datos[2].replace("precio: ","");
+        txtcodigo1.setText(codigo);
+        txtDescripcion1.setText(descripcion);
+        txtprecio1.setText(precio);
+        // llamamos los label de eliminar articulo
         }
+        
     }//GEN-LAST:event_lstArticuloValueChanged
 
     private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
@@ -412,15 +448,38 @@ public class frmArticulo extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDescripcionActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        int respuesta = JOptionPane.showconfirmDialog(this,
+        int respuesta = JOptionPane.showConfirmDialog(this,
                 "eliminacion de articulos",
                 "¿estas seguro que deseas eliminar el registro" +
                         updateArticulo.getDescripcion()+"?",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         // si la respuesta es si comienza eliminar el registro
         if(respuesta == JOptionPane.YES_OPTION);
-        UpdateArticulo.eliminar();
+        updateArticulo.eliminar();
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void txtcodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtcodigoActionPerformed
+
+    private void txtcodigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcodigoKeyReleased
+                                   
+    // 1. Obtenemos el texto que el usuario está escribiendo
+    String textoEnVivo = txtcodigo.getText();
+    
+    // 2. Verificamos si hay una fila seleccionada en la lista
+    int filaSeleccionada = lstArticulo.getSelectedIndex();
+    
+    if (filaSeleccionada != -1) {
+        // 3. Obtenemos el modelo de la lista para modificarlo
+        javax.swing.DefaultListModel<String> modelo = (javax.swing.DefaultListModel<String>) lstArticulo.getModel();
+        
+        // 4. Actualizamos el "Item" con lo que el usuario escribe
+        // Aquí puedes darle el formato que quieras, por ejemplo:
+        modelo.set(filaSeleccionada, "codigo: " + textoEnVivo);
+    }
+
+    }//GEN-LAST:event_txtcodigoKeyReleased
 
     /**
      * @param args the command line arguments
