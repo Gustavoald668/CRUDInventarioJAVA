@@ -8,14 +8,14 @@ package inventario.general;
  *
  * @author gustavo
  */
-public class frmMain extends javax.swing.JPanel {
+public class frmMain extends javax.swing.JFrame { // Cambia JPanel por JFrame
 
     /**
      * Creates new form frmMain
      */
     public frmMain() {
         initComponents();
-
+this.setLocationRelativeTo(null);
     }
 frmArticulo fArticulo = new frmArticulo();
 
@@ -88,8 +88,12 @@ frmArticulo fArticulo = new frmArticulo();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
+                                             
+    
+    frmArticulo fArt = new frmArticulo();
+    fArt.setLocationRelativeTo(null);
+    fArt.setVisible(true);
 
-        fArticulo.setVisible(true);
     }//GEN-LAST:event_btnInventarioActionPerformed
 
     private void btnOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpcionesActionPerformed
@@ -98,9 +102,19 @@ frmArticulo fArticulo = new frmArticulo();
     }//GEN-LAST:event_btnOpcionesActionPerformed
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnClientesActionPerformed
+                                                   
+                                             
+    frmCliente fCli = new frmCliente();
+    fCli.setLocationRelativeTo(null);
+    fCli.setVisible(true);
 
+
+    }//GEN-LAST:event_btnClientesActionPerformed
+public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(() -> {
+            new frmMain().setVisible(true);
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClientes;

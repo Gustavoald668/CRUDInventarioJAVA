@@ -55,6 +55,8 @@ public class frmCliente extends javax.swing.JFrame {
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(this::btnGuardarActionPerformed);
 
+        txtRazon.addActionListener(this::txtRazonActionPerformed);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -133,29 +135,34 @@ public class frmCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-       
-    String id = txtNoCliente.getText();
-    String nom = txtNombre.getText();
-    String tip = txtTipo.getText(); 
-    String raz = txtRazon.getText();
+                                            
+                                                  
+        
+        String id = txtNoCliente.getText(); 
+        String nom = txtNombre.getText();
+        String tip = txtTipo.getText();
+        String raz = txtRazon.getText();
 
-    
-    mClientes metodos = new mClientes();
-    
-    
-    if (metodos.guardarRegistro(id, nom, tip, raz)) {
-        javax.swing.JOptionPane.showMessageDialog(this, "¡Datos guardados en el archivo TXT!");
-        
-        
+      
+        clsCliente cliente = new clsCliente(id, nom, tip, raz);
+
+       
+        cliente.guardar();
+
+       
+        javax.swing.JOptionPane.showMessageDialog(this, "¡Datos guardados con éxito!");
+
         txtNoCliente.setText("");
         txtNombre.setText("");
         txtTipo.setText("");
         txtRazon.setText("");
         txtNoCliente.requestFocus();
-    } else {
-        javax.swing.JOptionPane.showMessageDialog(this, "Error al escribir en el archivo");
-    }
+    
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void txtRazonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRazonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRazonActionPerformed
 
     /**
      * @param args the command line arguments

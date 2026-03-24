@@ -18,7 +18,19 @@ public class frmArticulo extends javax.swing.JFrame {
      * Creates new form frmArticulo
      */
     public frmArticulo() {
-        initComponents();
+        
+    initComponents();
+    
+    lstArticulo.setModel(new javax.swing.DefaultListModel<String>());
+    
+    
+    try {
+        clsArticulo cargar = new clsArticulo();
+        lstArticulo.setModel(cargar.llenarLista());
+    } catch (Exception e) {
+        
+    }
+
     }
     
     clsArticulo updateArticulo;
@@ -36,19 +48,19 @@ public class frmArticulo extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        txtcodigo = new javax.swing.JTextField();
+        txtCodigo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtprecio = new javax.swing.JTextField();
+        txtPrecio = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         txtDescripcion = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstArticulo = new javax.swing.JList<>();
         jButton3 = new javax.swing.JButton();
+        txtBuscar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -64,10 +76,10 @@ public class frmArticulo extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        lblCodigo = new javax.swing.JLabel();
-        lblDescripcion = new javax.swing.JLabel();
-        lblPrecio = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
 
         jTextField3.setText("jTextField3");
 
@@ -77,16 +89,16 @@ public class frmArticulo extends javax.swing.JFrame {
 
         jLabel2.setText("codigo");
 
-        txtcodigo.addActionListener(this::txtcodigoActionPerformed);
-        txtcodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtCodigo.addActionListener(this::txtCodigoActionPerformed);
+        txtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtcodigoKeyReleased(evt);
+                txtCodigoKeyReleased(evt);
             }
         });
 
         jLabel3.setText("Precio");
 
-        txtprecio.addActionListener(this::txtprecioActionPerformed);
+        txtPrecio.addActionListener(this::txtPrecioActionPerformed);
 
         jButton1.setText("Guardar");
         jButton1.addActionListener(this::jButton1ActionPerformed);
@@ -116,13 +128,13 @@ public class frmArticulo extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(txtprecio, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -130,7 +142,7 @@ public class frmArticulo extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -139,7 +151,7 @@ public class frmArticulo extends javax.swing.JFrame {
                 .addGap(3, 3, 3)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtprecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addContainerGap(16, Short.MAX_VALUE))
@@ -147,9 +159,7 @@ public class frmArticulo extends javax.swing.JFrame {
 
         jLabel6.setText("consultar Articulo");
 
-        jLabel7.setText("Busqueda po codigo");
-
-        jButton2.addActionListener(this::jButton2ActionPerformed);
+        jLabel7.setText("Busqueda por codigo");
 
         lstArticulo.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -168,17 +178,15 @@ public class frmArticulo extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
-                        .addComponent(jButton3)
-                        .addGap(33, 33, 33))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(33, 33, 33))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jScrollPane1)
                 .addContainerGap())
@@ -188,14 +196,13 @@ public class frmArticulo extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel7)
-                        .addComponent(jButton3)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jButton3)
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         jLabel1.setText("Registro de articulos");
@@ -220,7 +227,7 @@ public class frmArticulo extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addContainerGap(363, Short.MAX_VALUE))
+                .addContainerGap(373, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(138, 138, 138)
@@ -276,12 +283,6 @@ public class frmArticulo extends javax.swing.JFrame {
 
         jLabel15.setText("precio");
 
-        lblCodigo.setText("jLabel16");
-
-        lblDescripcion.setText("jLabel17");
-
-        lblPrecio.setText("jLabel18");
-
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
@@ -293,45 +294,46 @@ public class frmArticulo extends javax.swing.JFrame {
                 .addComponent(jLabel12)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(76, 76, 76)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel15))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel13)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCodigo)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lblDescripcion))
-                    .addComponent(lblPrecio, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnEliminar)
-                .addGap(137, 137, 137))
+                        .addGap(200, 200, 200)
+                        .addComponent(btnEliminar))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addGap(88, 88, 88)
+                            .addComponent(jLabel15)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(84, 84, 84)
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                .addGap(64, 64, 64)
+                                .addComponent(jLabel14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(280, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jLabel12)
-                .addGap(40, 40, 40)
+                .addGap(51, 51, 51)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(lblCodigo))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(lblDescripcion))
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(lblPrecio))
-                .addGap(18, 18, 18)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEliminar)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -376,43 +378,81 @@ public class frmArticulo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtprecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtprecioActionPerformed
+    private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtprecioActionPerformed
+    }//GEN-LAST:event_txtPrecioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        clsArticulo cArticulo = new clsArticulo();
-        lstArticulo.setModel(cArticulo.llenarLista());
+                                              
+        try {
+            
+            String cod = txtCodigo.getText();
+            String desc = txtDescripcion.getText();
+            
+            double pre = Double.parseDouble(txtPrecio.getText());
+
+            
+            clsArticulo nuevoArt = new clsArticulo(cod, desc, pre);
+            
+            
+            nuevoArt.guardar(); 
+
+           
+            javax.swing.JOptionPane.showMessageDialog(this, "¡Artículo guardado con éxito!");
+
+            
+            txtCodigo.setText("");
+            txtDescripcion.setText("");
+            txtPrecio.setText("");
+            txtCodigo.requestFocus(); 
+
+            
+            lstArticulo.setModel(nuevoArt.llenarLista());
+
+        } catch (NumberFormatException e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error: El precio debe ser un número.");
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error al guardar: " + e.getMessage());
+        }
+    
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-                                        
-    // Solo el contenido, sin volver a declarar el método dentro
-    String codigoBuscar = jButton2.getText().trim(); 
-
+                                                                     
+  
+    String codigoBuscar = txtBuscar.getText().trim().toLowerCase();
+    
+  
     if (codigoBuscar.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Escribe un código para buscar");
+        JOptionPane.showMessageDialog(this, "Escribe un código o nombre para buscar");
         return;
     }
 
     boolean encontrado = false;
+    
+    
     for (int i = 0; i < lstArticulo.getModel().getSize(); i++) {
-        String elemento = lstArticulo.getModel().getElementAt(i);
-        if (elemento.contains("codigo: " + codigoBuscar)) {
+        
+        String elemento = lstArticulo.getModel().getElementAt(i).toLowerCase();
+        
+        
+        if (elemento.contains(codigoBuscar)) {
             lstArticulo.setSelectedIndex(i);
-            lstArticulo.ensureIndexIsVisible(i);
+            lstArticulo.ensureIndexIsVisible(i); 
             encontrado = true;
-            break;
+            break; 
         }
     }
 
+    
     if (!encontrado) {
-        JOptionPane.showMessageDialog(this, "No se encontró el artículo");
+        JOptionPane.showMessageDialog(this, "No se encontró el artículo: " + codigoBuscar);
     }
+         
+    
+    
+
+    
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -421,65 +461,129 @@ public class frmArticulo extends javax.swing.JFrame {
     }//GEN-LAST:event_txtprecio1ActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        // TODO add your handling code here:
+                                              
+    try {
+        if (updateArticulo == null) {
+            JOptionPane.showMessageDialog(this, "Selecciona un artículo de la lista");
+            return;
+        }
+
+        // 1. Leemos lo que escribiste en los cuadros de abajo
+        String nCod = txtcodigo1.getText(); 
+        String nDes = txtDescripcion1.getText();
+        double nPre = Double.parseDouble(txtprecio1.getText());
+
+        // 2. Creamos el nuevo objeto con los cambios
+        clsArticulo artEditado = new clsArticulo(nCod, nDes, nPre);
+        mArticulos modelo = new mArticulos();
+        
+        // 3. Borramos la línea vieja (usando el objeto guardado al dar clic)
+        String lineaVieja = updateArticulo.getCodigo() + "|" + updateArticulo.getDescripcion() + "|" + updateArticulo.getPrecio();
+        
+        modelo.delete(lineaVieja, "listado_articulos.txt");
+        modelo.insertar(artEditado.aTexto());
+
+        JOptionPane.showMessageDialog(this, "¡Artículo actualizado!");
+        
+        // 4. Refrescamos la lista y limpiamos
+        lstArticulo.setModel(artEditado.llenarLista());
+        txtcodigo1.setText("");
+        txtDescripcion1.setText("");
+        txtprecio1.setText("");
+        updateArticulo = null;
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error: Revisa que el precio sea un número.");
+    }
+
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void lstArticuloValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstArticuloValueChanged
-       // Asegura que seleccionamos un objeto en la lista
-        if(!evt.getValueIsAdjusting()) {
-           // le asigna el valor de la lista seleccionado a la variable
-        String registroSeleccionado = lstArticulo.getSelectedValue();
-        // separar los datos por el caracter especial
-        String[] datos = registroSeleccionado.split("\\|");
-        // preparamos los datos para mostrar limpios
-        String codigo = datos[0].replace("codigo: ", "");
-        String descripcion = datos[1]. replace("Descripcion:", "");
-        String precio = datos[2].replace("precio: ","");
-        txtcodigo1.setText(codigo);
-        txtDescripcion1.setText(descripcion);
-        txtprecio1.setText(precio);
-        // llamamos los label de eliminar articulo
-        }
-        
-    }//GEN-LAST:event_lstArticuloValueChanged
+                                                                                                                    
+    if (!evt.getValueIsAdjusting()) {
+        String seleccionado = (String) lstArticulo.getSelectedValue();
+        if (seleccionado != null) {
+            try {
+                // 1. Separamos por la barra vertical
+                String[] datos = seleccionado.split("\\|"); 
 
+                // 2. Limpiamos cada parte (quitamos "codigo:", "Descripcion:", etc.)
+                // Usamos toLowerCase() para que no importe si escribiste con Mayúscula o minúscula
+                String codigo = datos[0].toLowerCase().replace("codigo:", "").trim();
+                String descripcion = datos[1].toLowerCase().replace("descripcion:", "").trim();
+                String precio = datos[2].toLowerCase().replace("precio:", "").trim();
+
+                // 3. Llenamos los cuadritos de la derecha (los de Eliminar/Actualizar)
+                txtcodigo1.setText(codigo);
+                txtDescripcion1.setText(descripcion);
+                txtprecio1.setText(precio);
+
+                // 4. ESTA ES LA LÍNEA MÁS IMPORTANTE:
+                // Aquí es donde "updateArticulo" deja de ser null
+                updateArticulo = new clsArticulo(codigo, descripcion, Double.parseDouble(precio));
+                
+            } catch (Exception e) {
+                System.out.println("Error al procesar la selección: " + e.getMessage());
+            }
+        }
+    }
+
+    }//GEN-LAST:event_lstArticuloValueChanged
+    
     private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDescripcionActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        int respuesta = JOptionPane.showConfirmDialog(this,
-                "eliminacion de articulos",
-                "¿estas seguro que deseas eliminar el registro" +
-                        updateArticulo.getDescripcion()+"?",
-                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        // si la respuesta es si comienza eliminar el registro
-        if(respuesta == JOptionPane.YES_OPTION);
-        updateArticulo.eliminar();
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
-    private void txtcodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtcodigoActionPerformed
-
-    private void txtcodigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcodigoKeyReleased
-                                   
-    // 1. Obtenemos el texto que el usuario está escribiendo
-    String textoEnVivo = txtcodigo.getText();
+                                           
+                                               
     
-    // 2. Verificamos si hay una fila seleccionada en la lista
-    int filaSeleccionada = lstArticulo.getSelectedIndex();
-    
-    if (filaSeleccionada != -1) {
-        // 3. Obtenemos el modelo de la lista para modificarlo
-        javax.swing.DefaultListModel<String> modelo = (javax.swing.DefaultListModel<String>) lstArticulo.getModel();
-        
-        // 4. Actualizamos el "Item" con lo que el usuario escribe
-        // Aquí puedes darle el formato que quieras, por ejemplo:
-        modelo.set(filaSeleccionada, "codigo: " + textoEnVivo);
+    if (updateArticulo == null) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Primero selecciona un artículo de la lista para eliminar.");
+        return;
     }
 
-    }//GEN-LAST:event_txtcodigoKeyReleased
+    
+    int respuesta = javax.swing.JOptionPane.showConfirmDialog(this,
+            "¿Seguro que quieres eliminar: " + updateArticulo.getDescripcion() + "?", 
+            "Confirmar eliminación", 
+            javax.swing.JOptionPane.YES_NO_OPTION);
+
+    if (respuesta == javax.swing.JOptionPane.YES_OPTION) {
+        try {
+            
+            updateArticulo.eliminar();
+            
+            
+            lstArticulo.setModel(new clsArticulo().llenarLista());
+            txtcodigo1.setText("");
+            txtDescripcion1.setText("");
+            txtprecio1.setText("");
+            updateArticulo = null; 
+            
+            javax.swing.JOptionPane.showMessageDialog(this, "Artículo eliminado correctamente.");
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error al eliminar: " + e.getMessage());
+        }
+    
+}
+
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoActionPerformed
+
+    private void txtCodigoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKeyReleased
+                                   
+    
+
+    
+    
+
+    
+
+    }//GEN-LAST:event_txtCodigoKeyReleased
 
     /**
      * @param args the command line arguments
@@ -510,7 +614,6 @@ public class frmArticulo extends javax.swing.JFrame {
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -532,16 +635,17 @@ public class frmArticulo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JLabel lblCodigo;
-    private javax.swing.JLabel lblDescripcion;
-    private javax.swing.JLabel lblPrecio;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JList<String> lstArticulo;
+    private javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtDescripcion1;
-    private javax.swing.JTextField txtcodigo;
+    private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextField txtcodigo1;
-    private javax.swing.JTextField txtprecio;
     private javax.swing.JTextField txtprecio1;
     // End of variables declaration//GEN-END:variables
 }

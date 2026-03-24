@@ -72,12 +72,25 @@ public class clsArticulo {
      * Recupera los datos y los formatea para un JList de Swing
      */
     public DefaultListModel<String> llenarLista() {
+  
         mArticulos mArticle = new mArticulos();
         ArrayList<String> datos = mArticle.consultar();
 
         DefaultListModel<String> modelista = new DefaultListModel<>();
+        
         for (String registro : datos) {
-            modelista.addElement(registro);
+            // registro viene del archivo como: "101|Laptop|500.0"
+            String[] partes = registro.split("\\|");
+            
+            if (partes.length >= 3) {
+                // AQUÍ AGREGAMOS LOS PALITOS Y ETIQUETAS QUE FALTABAN
+                // Es vital que el formato sea idéntico al que buscas en el Formulario
+                String formatoVisible = "codigo: " + partes[0] + " | Descripcion: " + partes[1] + " | precio: " + partes[2];
+                modelista.addElement(formatoVisible);
+            } else {
+                // Por si hay alguna línea vacía o dañada en el archivo
+                modelista.addElement(registro);
+            }
         }
 
         return modelista;
