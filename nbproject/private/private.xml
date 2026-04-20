@@ -3,14 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/gustavo/Documents/GitHub/CRUDInventarioJAVA/src/inventario/general/InventarioGeneral.java</file>
-            <file>file:/Users/gustavo/Documents/GitHub/CRUDInventarioJAVA/src/inventario/general/clsArticulo.java</file>
-            <file>file:/Users/gustavo/Documents/GitHub/CRUDInventarioJAVA/src/inventario/general/clsCliente.java</file>
             <file>file:/Users/gustavo/Documents/GitHub/CRUDInventarioJAVA/src/inventario/general/frmArticulo.java</file>
-            <file>file:/Users/gustavo/Documents/GitHub/CRUDInventarioJAVA/src/inventario/general/frmCliente.java</file>
-            <file>file:/Users/gustavo/Documents/GitHub/CRUDInventarioJAVA/src/inventario/general/frmMain.java</file>
-            <file>file:/Users/gustavo/Documents/GitHub/CRUDInventarioJAVA/src/inventario/general/mArticulos.java</file>
-            <file>file:/Users/gustavo/Documents/GitHub/CRUDInventarioJAVA/src/inventario/general/mClientes.java</file>
+            <file>file:/Users/gustavo/Documents/GitHub/CRUDInventarioJAVA/src/inventario/general/clsCSV.java</file>
+            <file>file:/Users/gustavo/Documents/GitHub/CRUDInventarioJAVA/src/inventario/general/clsArticulo.java</file>
         </group>
     </open-files>
 </project-private>

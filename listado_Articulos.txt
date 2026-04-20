@@ -1,5 +1,15 @@
-345|mac|7654.0
-5|cinco|5.0
 2|cc|4.0
-7|...|456.0
-pc hp|hp g4 notebook gamer|89.0
+7|Holaaaa|456.0
+093|Celular|2500.0
+FER-004|Pinzas de Presion 10in|150.0
+FER-005|Desarmador Cruz 1/4x4|45.5
+ELE-003|Cable Calibre 12 AWG 100m|1200.0
+ELE-004|Foco LED 12W|30.0
+PLM-001|Cinta Teflon 1/2in|15.0
+PLM-002|Llave de Paso Cobre 3/4|85.0
+FER-004|Pinzas de Presion 10in|150.0
+FER-005|Desarmador Cruz 1/4x4|45.5
+ELE-003|Cable Calibre 12 AWG 100m|1200.0
+ELE-004|Foco LED 12W|30.0
+PLM-001|Cinta Teflon 1/2in|15.0
+PLM-002|Llave de Paso Cobre 3/4|85.0
