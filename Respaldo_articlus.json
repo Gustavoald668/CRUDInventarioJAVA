@@ -1,0 +1,77 @@
+[
+  {
+    "codigo": "2",
+    "descripcion": "cc",
+    "precio": 4.0
+  },
+  {
+    "codigo": "7",
+    "descripcion": "Holaaaa",
+    "precio": 456.0
+  },
+  {
+    "codigo": "093",
+    "descripcion": "Celular",
+    "precio": 2500.0
+  },
+  {
+    "codigo": "FER-004",
+    "descripcion": "Pinzas de Presion 10in",
+    "precio": 150.0
+  },
+  {
+    "codigo": "FER-005",
+    "descripcion": "Desarmador Cruz 1/4x4",
+    "precio": 45.5
+  },
+  {
+    "codigo": "ELE-003",
+    "descripcion": "Cable Calibre 12 AWG 100m",
+    "precio": 1200.0
+  },
+  {
+    "codigo": "ELE-004",
+    "descripcion": "Foco LED 12W",
+    "precio": 30.0
+  },
+  {
+    "codigo": "PLM-001",
+    "descripcion": "Cinta Teflon 1/2in",
+    "precio": 15.0
+  },
+  {
+    "codigo": "PLM-002",
+    "descripcion": "Llave de Paso Cobre 3/4",
+    "precio": 85.0
+  },
+  {
+    "codigo": "FER-004",
+    "descripcion": "Pinzas de Presion 10in",
+    "precio": 150.0
+  },
+  {
+    "codigo": "FER-005",
+    "descripcion": "Desarmador Cruz 1/4x4",
+    "precio": 45.5
+  },
+  {
+    "codigo": "ELE-003",
+    "descripcion": "Cable Calibre 12 AWG 100m",
+    "precio": 1200.0
+  },
+  {
+    "codigo": "ELE-004",
+    "descripcion": "Foco LED 12W",
+    "precio": 30.0
+  },
+  {
+    "codigo": "PLM-001",
+    "descripcion": "Cinta Teflon 1/2in",
+    "precio": 15.0
+  },
+  {
+    "codigo": "PLM-002",
+    "descripcion": "Llave de Paso Cobre 3/4",
+    "precio": 85.0
+  }
+]
