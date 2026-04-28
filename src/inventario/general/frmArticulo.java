@@ -9,12 +9,17 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
-
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.Element;
 /**
  *
  * @author gusta
@@ -72,6 +77,7 @@ public class frmArticulo extends javax.swing.JFrame {
         jMenuBar6 = new javax.swing.JMenuBar();
         jMenu10 = new javax.swing.JMenu();
         jMenu11 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
@@ -109,6 +115,7 @@ public class frmArticulo extends javax.swing.JFrame {
         jmImportar = new javax.swing.JMenu();
         jmiImportar = new javax.swing.JMenuItem();
         jmiExportar = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         jTextField3.setText("jTextField3");
@@ -146,6 +153,8 @@ public class frmArticulo extends javax.swing.JFrame {
 
         jMenu11.setText("Edit");
         jMenuBar6.add(jMenu11);
+
+        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -409,9 +418,14 @@ public class frmArticulo extends javax.swing.JFrame {
         jmiExportar.addActionListener(this::jmiExportarActionPerformed);
         jmImportar.add(jmiExportar);
 
+        jMenuItem3.setText("Generar Reporte PDF");
+        jMenuItem3.addActionListener(this::jMenuItem3ActionPerformed);
+        jmImportar.add(jMenuItem3);
+
         jMenuBar1.add(jmImportar);
 
-        jMenu2.setText("informnacion");
+        jMenu2.setText("Informacion");
+        jMenu2.addActionListener(this::jMenu2ActionPerformed);
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -609,6 +623,53 @@ public class frmArticulo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDescripcionActionPerformed
 
+    
+    
+    private void generarReportePDF() {
+       com.itextpdf.text.Document documento = new com.itextpdf.text.Document();
+        try {
+            // Esto crea el archivo en la carpeta de tu proyecto
+            com.itextpdf.text.pdf.PdfWriter.getInstance(documento, new java.io.FileOutputStream("Reporte_Inventario.pdf"));
+            documento.open();
+
+            // Título del documento
+            com.itextpdf.text.Paragraph titulo = new com.itextpdf.text.Paragraph("REPORTE DE INVENTARIO - TALLER 360");
+            titulo.setAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
+            documento.add(titulo);
+            documento.add(new com.itextpdf.text.Paragraph(" ")); // Espacio en blanco
+
+            // Tabla de 3 columnas
+            com.itextpdf.text.pdf.PdfPTable tabla = new com.itextpdf.text.pdf.PdfPTable(3);
+            tabla.addCell("CÓDIGO");
+            tabla.addCell("DESCRIPCIÓN");
+            tabla.addCell("PRECIO");
+
+            // Leemos los artículos guardados
+            java.io.File archivo = new java.io.File("listado_articulos.txt");
+            if (archivo.exists()) {
+                java.io.BufferedReader br = new java.io.BufferedReader(new java.io.FileReader(archivo));
+                String linea;
+                while ((linea = br.readLine()) != null) {
+                    String[] datos = linea.split("\\|");
+                    if (datos.length >= 3) {
+                        tabla.addCell(datos[0].trim());
+                        tabla.addCell(datos[1].trim());
+                        tabla.addCell(datos[2].trim());
+                    }
+                }
+                br.close();
+            }
+
+            documento.add(tabla);
+            documento.close();
+            
+            // ESTO TE AVISARÁ SI SE CREÓ
+            javax.swing.JOptionPane.showMessageDialog(this, "¡PDF generado con éxito en la carpeta del proyecto!");
+
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error al generar PDF: " + e.getMessage());
+        }
+    }
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
                                            
                                                
@@ -722,6 +783,63 @@ public class frmArticulo extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_jmiExportarActionPerformed
 
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+Document documento = new Document();
+
+    try {
+        // 2. Preparamos el escritor para guardar el archivo en el disco duro
+        PdfWriter.getInstance(documento, new FileOutputStream("Reporte_Inventario.pdf"));
+       
+        // 3. Abrimos el documento para empezar a escribirle
+        documento.open();
+       
+        // 4. Agregamos un Título
+        documento.add(new Paragraph("Reporte Gerencial de Inventario - Taller 360"));
+        documento.add(new Paragraph(" ")); // Un salto de línea para dar espacio
+
+        // 5. Creamos la estructura tabular (3 columnas)
+        PdfPTable tabla = new PdfPTable(3);
+       
+        // 6. Agregamos los encabezados de la tabla
+        tabla.addCell("CÓDIGO");
+        tabla.addCell("DESCRIPCIÓN");
+        tabla.addCell("PRECIO ($)");
+
+        // =======================================================
+        // 7. AQUÍ VA EL CICLO DONDE LEEN SUS DATOS
+        // (Esto es solo una simulación manual para el ejemplo)
+        // En la práctica real, aquí harían el recorrido de su JList
+        // o leerían su archivo .txt línea por línea.
+        // =======================================================
+       
+        // Simulación del Artículo 1
+        tabla.addCell("FER-001");
+        tabla.addCell("Martillo de Acero");
+        tabla.addCell("245.50");
+       
+        // Simulación del Artículo 2
+        tabla.addCell("ELE-002");
+        tabla.addCell("Multímetro Digital");
+        tabla.addCell("420.00");
+
+        // 8. Inyectamos la tabla terminada dentro del documento PDF
+        documento.add(tabla);
+
+        // 9. Cerramos el documento (¡Importantísimo para que se guarde el archivo!)
+        documento.close();
+       
+        // Mensaje de éxito para el usuario
+        javax.swing.JOptionPane.showMessageDialog(this, "¡PDF generado con éxito en la carpeta del proyecto!");
+
+    } catch (Exception e) {
+        System.out.println("Error al generar el PDF: " + e.getMessage());
+    }      
+    }//GEN-LAST:event_jMenu2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        generarReportePDF();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -784,6 +902,8 @@ public class frmArticulo extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar5;
     private javax.swing.JMenuBar jMenuBar6;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
