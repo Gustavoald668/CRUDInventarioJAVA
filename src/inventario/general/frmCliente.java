@@ -39,6 +39,10 @@ public class frmCliente extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         txtTipo = new javax.swing.JTextField();
         txtRazon = new javax.swing.JTextField();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
 
         jLabel2.setText("jLabel2");
 
@@ -111,8 +115,21 @@ public class frmCliente extends javax.swing.JFrame {
                     .addComponent(txtRazon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGuardar)
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addContainerGap(235, Short.MAX_VALUE))
         );
+
+        jMenu1.setText("Exportar csv");
+
+        jMenuItem1.setText("Exportar csv");
+        jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Informacion");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -164,6 +181,37 @@ public class frmCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRazonActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        try {
+    String no = txtNoCliente.getText();
+    String nom = txtNombre.getText();
+    String tipo = txtTipo.getText();
+    String raz = txtRazon.getText();
+
+    if (no.isEmpty() || nom.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Por favor llene los campos");
+        return;
+    }
+
+    java.io.File archivo = new java.io.File("clientes.csv");
+    java.io.BufferedWriter bw = new java.io.BufferedWriter(new java.io.FileWriter(archivo));
+
+    bw.write("No.Cliente,Nombre,Tipo Cliente,Razon Social");
+    bw.newLine();
+
+    bw.write(no + "," + nom + "," + tipo + "," + raz);
+    bw.close();
+
+    javax.swing.JOptionPane.showMessageDialog(this, "¡CSV generado con éxito!");
+
+    if (java.awt.Desktop.isDesktopSupported()) {
+        java.awt.Desktop.getDesktop().open(archivo);
+    }
+} catch (Exception e) {
+    javax.swing.JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+}
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -196,6 +244,10 @@ public class frmCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtNoCliente;
     private javax.swing.JTextField txtNombre;
